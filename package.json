@@ -1,0 +1,19 @@
+{
+  "name": "raspberrytor",
+  "version": "1.0.0",
+  "description": "A small little package that allows you to manage all raspberries without 1) the need to bring your keyboard and mouse 2) moving.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "fabien rahaingomanana",
+  "license": "ISC",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "ejs": "^2.6.1",
+    "express": "^4.17.1",
+    "nodemon": "^1.19.1",
+    "opn": "^6.0.0",
+    "url": "^0.11.0"
+  }
+}
