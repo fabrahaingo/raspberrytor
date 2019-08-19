@@ -14,8 +14,12 @@ config.raspberries = {
         connectionType: 'vnc'
     },
     'node4': {
-	localIp: '192.168.4.185',
-	connectionType: 'vnc'
+	    localIp: '192.168.4.185',
+	    connectionType: 'vnc'
+    },
+    'node5': {
+        localIp: '192.168.5.91',
+        connectionType: 'vnc'
     }
 }
 

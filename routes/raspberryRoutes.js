@@ -61,5 +61,18 @@ module.exports = (function() {
         res.redirect('/')
     })
 
+    raspberryRoutes.get('/5', async function (req, res) {
+
+        let connectionAddress = `${config.raspberries.node5.connectionType}://${config.raspberries.node5.localIp}`
+
+        await exec(`open ${connectionAddress}`, (err) => {
+            if (err) {
+              console.log(`NodeJS couldn't execute open ${connectionAddress}`)
+              return
+            }
+        })
+        res.redirect('/')
+    })
+
     return raspberryRoutes
 })()
