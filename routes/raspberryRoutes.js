@@ -74,5 +74,44 @@ module.exports = (function() {
         res.redirect('/')
     })
 
+    raspberryRoutes.get('/6', async function (req, res) {
+
+        let connectionAddress = `${config.raspberries.node6.connectionType}://${config.raspberries.node6.localIp}`
+
+        await exec(`open ${connectionAddress}`, (err) => {
+            if (err) {
+              console.log(`NodeJS couldn't execute open ${connectionAddress}`)
+              return
+            }
+        })
+        res.redirect('/')
+    })
+
+    raspberryRoutes.get('/7', async function (req, res) {
+
+        let connectionAddress = `${config.raspberries.node7.connectionType}://${config.raspberries.node7.localIp}`
+
+        await exec(`open ${connectionAddress}`, (err) => {
+            if (err) {
+              console.log(`NodeJS couldn't execute open ${connectionAddress}`)
+              return
+            }
+        })
+        res.redirect('/')
+    })
+
+    raspberryRoutes.get('/8', async function (req, res) {
+
+        let connectionAddress = `${config.raspberries.node8.connectionType}://${config.raspberries.node8.localIp}`
+
+        await exec(`open ${connectionAddress}`, (err) => {
+            if (err) {
+              console.log(`NodeJS couldn't execute open ${connectionAddress}`)
+              return
+            }
+        })
+        res.redirect('/')
+    })
+
     return raspberryRoutes
 })()
