@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
 
+const PORT = 3000
+
 app.use('/img', express.static(__dirname + '/img'));
 
 // Router definitions
@@ -18,6 +20,6 @@ app.get('/db', async function (req, res) {
 
 app.use('/raspberry', raspberryRoutes)
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
+app.listen(PORT, function () {
+  console.log(`listrning on port ${PORT}`)
 })
