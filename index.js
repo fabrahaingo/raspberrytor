@@ -9,9 +9,9 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname + '/views/index.html')
 })
 
-app.get('/db', async function (req, res) {
-  const a = await db.get(`SELECT $1`, [1])
-  return res.json(a)
+app.post('/raspberry/list', async function (req, res) {
+  const raspberries = await db.all(`SELECT * FROM raspberry`)
+  return res.json(raspberries)
 })
 
 app.post('/raspberry/delete', async function (req, res) {
