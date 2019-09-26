@@ -23,8 +23,6 @@ app.post('/raspberry/delete', async function (req, res) {
   return res.status(200)
 })
 
-app.use('/raspberry', raspberryRoutes)
-
 app.listen(PORT, function () {
   console.log(`listening on port ${PORT}`)
 })
