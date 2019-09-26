@@ -5,9 +5,6 @@ const db = require("./db")
 
 app.use('/img', express.static(__dirname + '/img'));
 
-// Router definitions
-const raspberryRoutes = require('./routes/raspberryRoutes')
-
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/views/index.html')
 })
