@@ -17,7 +17,7 @@ app.get('/db', async function (req, res) {
   return res.json(a)
 })
 
-app.post('/raspberry/delete', function (req, res) {
+app.post('/raspberry/delete', async function (req, res) {
   const raspberry_id = req.body.id
   await db.run(
     `DELETE FROM raspberry WHERE id = $1`,
