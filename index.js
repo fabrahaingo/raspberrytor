@@ -24,7 +24,6 @@ app.post('/raspberry/delete', async function (req, res) {
 })
 
 app.get('/raspberry/add', async function (req, res) {
-  db.run(`INSERT INTO raspeberries (name, ip) VALUES ('${req.raspberryName}', '${req.raspberryIp}')`)
   const raspberry_ip = req.body.ip
   const raspberry_name = req.body.name
   await db.run(
