@@ -12,9 +12,9 @@ app.get('/', async function (req, res) {
   res.render("index", { raspberries })
 })
 
-app.get('/db', async function (req, res) {
-  const a = await db.get(`SELECT $1`, [1])
-  return res.json(a)
+app.get('/raspberry/list', async function (req, res) {
+  const raspberries = await db.all(`SELECT * FROM raspberry`)
+  return res.json(raspberries)
 })
 
 app.post('/raspberry/delete', async function (req, res) {
@@ -22,6 +22,16 @@ app.post('/raspberry/delete', async function (req, res) {
   await db.run(`DELETE FROM raspberry WHERE id = $1`, [raspberry_id])
   return res.status(200)
 })
+
+app.get('/raspberry/add', async function (req, res) {
+  const raspberry_ip = req.body.ip
+  const raspberry_name = req.body.name
+  await db.run(
+    `INSERT INTO raspeberries (name, ip) VALUES ($1, $2)`,
+    [raspberry_ip, raspberry_name]
+  )
+  return res.status(200)
+});
 
 app.listen(PORT, function () {
   console.log(`listening on port ${PORT}`)
