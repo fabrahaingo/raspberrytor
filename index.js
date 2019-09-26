@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const db = require("./db")
 
 const PORT = 3000
 
@@ -12,14 +13,13 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname + '/views/index.html')
 })
 
-const db = require("./db")
-app.get('/db', async function (req, res) {
-  const a = await db.get(`SELECT $1`, [1])
-  return res.json(a)
+app.get("/raspberry/list", async function (req, res) {
+  const raspberries = await db.all(`SELECT * FROM rasbperry WHERE id = id`)
+  return res.json(raspberries)
 })
 
 app.use('/raspberry', raspberryRoutes)
 
 app.listen(PORT, function () {
-  console.log(`listrning on port ${PORT}`)
+  console.log(`listening on port ${PORT}`)
 })
