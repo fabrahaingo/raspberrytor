@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
-const db = require("./db")
 const PORT = 3000
+const db = require("./db")
 
 app.use('/img', express.static(__dirname + '/img'));
 
@@ -29,5 +29,5 @@ app.post('/raspberry/delete', async function (req, res) {
 app.use('/raspberry', raspberryRoutes)
 
 app.listen(PORT, function () {
-  console.log(`listning on port ${PORT}`)
+  console.log(`listening on port ${PORT}`)
 })
