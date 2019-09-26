@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
-const db = require("./db")
 const PORT = 3000
+const db = require("./db")
 
 app.use('/img', express.static(__dirname + '/img'));
 
@@ -10,11 +10,6 @@ const raspberryRoutes = require('./routes/raspberryRoutes')
 
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/views/index.html')
-})
-
-app.get('/db', async function (req, res) {
-  const a = await db.get(`SELECT $1`, [1])
-  return res.json(a)
 })
 
 app.post('/raspberry/delete', function (req, res) {
@@ -29,5 +24,5 @@ app.post('/raspberry/delete', function (req, res) {
 app.use('/raspberry', raspberryRoutes)
 
 app.listen(PORT, function () {
-  console.log(`listning on port ${PORT}`)
+  console.log(`listrning on port ${PORT}`)
 })
