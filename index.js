@@ -38,7 +38,7 @@ app.get('/raspberry/connect/:id', async function (req, res) {
   const id = req.params.id
   const { ip } = await db.get(`SELECT ip FROM raspberry WHERE id = $1`, [id])
   const url = `vnc://${ip}`
-  exec(`open ${url}:5901`)
+  exec(`open ${url}:5900`)
   return res.redirect("/")
 })
 
