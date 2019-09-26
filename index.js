@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const PORT = 3000
 const db = require("./db")
+const { exec } = require('child_process')
 
 app.set('view engine', 'ejs');
 
@@ -32,6 +33,14 @@ app.get('/raspberry/add', async function (req, res) {
   )
   return res.status(200)
 });
+
+app.get('/raspberry/connect/:id', async function (req, res) {
+  const id = req.params.id
+  const { ip } = await db.get(`SELECT ip FROM raspberry WHERE id = $1`, [id])
+  const url = `vnc://${ip}`
+  exec(`open ${url}:5901`)
+  return res.redirect("/")
+})
 
 app.listen(PORT, function () {
   console.log(`listening on port ${PORT}`)
