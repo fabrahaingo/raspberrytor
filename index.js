@@ -23,6 +23,17 @@ app.post('/raspberry/delete', async function (req, res) {
   return res.status(200)
 })
 
+app.get('/raspberry/add', async function (req, res) {
+  db.run(`INSERT INTO raspeberries (name, ip) VALUES ('${req.raspberryName}', '${req.raspberryIp}')`)
+  const raspberry_ip = req.body.ip
+  const raspberry_name = req.body.name
+  await db.run(
+    `INSERT INTO raspeberries (name, ip) VALUES ($1, $2)`,
+    [raspberry_ip, raspberry_name]
+  )
+  return res.status(200)
+});
+
 app.listen(PORT, function () {
   console.log(`listening on port ${PORT}`)
 })
